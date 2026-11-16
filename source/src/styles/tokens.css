@@ -1,0 +1,49 @@
+/* Design tokens. Every colour, font and timing on the site comes from here. */
+:root {
+  --paper: #ecede8;
+  --paper-2: #e2e4de;
+  --card: #f7f7f3;
+  --ink: #15171c;
+  --ink-2: #4b4f57;
+  --ink-3: #60646d;
+  --line: rgb(21 23 28 / 0.13);
+  --line-2: rgb(21 23 28 / 0.24);
+  --red: #b93218;
+  --red-soft: rgb(185 50 24 / 0.11);
+  --blue: #2e4bff;
+  /* Text on a solid --blue fill; must stay at 4.5:1 or above in both themes. */
+  --on-blue: #ffffff;
+  --sun: #ffd23f;
+  --mint: #3ddc97;
+  --tint-sun: #ffe58a;
+  --tint-blue: #cbd4ff;
+  --tint-mint: #c4f0dc;
+  --tint-coral: #ffcdbf;
+  --on-accent: #15171c;
+
+  --font-sans: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --page-width: 1200px;
+  --gutter: clamp(18px, 4vw, 48px);
+  --header-height: 64px;
+  --radius-card: 16px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --focus: 2.5px solid var(--blue);
+}
+
+[data-theme="night"] {
+  --paper: #111217;
+  --paper-2: #1a1c23;
+  --card: #1c1e26;
+  --ink: #f1f0ea;
+  --ink-2: #b7b9c2;
+  --ink-3: #9a9ea8;
+  --line: rgb(241 240 234 / 0.11);
+  --line-2: rgb(241 240 234 / 0.22);
+  --red: #ff7a5e;
+  --red-soft: rgb(255 122 94 / 0.14);
+  --blue: #7d8fff;
+  --on-blue: #111217;
+}

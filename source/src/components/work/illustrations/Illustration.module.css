@@ -1,0 +1,34 @@
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mark {
+  fill: none;
+  stroke: #d23a1f;
+  stroke-width: 1.5;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.1s var(--ease);
+}
+.svg[data-drawn="false"] .mark {
+  stroke-dashoffset: 400;
+}
+.note {
+  fill: #b5321a;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.label {
+  fill: #3e424a;
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+.ui {
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
