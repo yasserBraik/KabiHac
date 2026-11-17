@@ -354,11 +354,11 @@ p{margin:0 0 .85em;hyphens:auto;text-align:justify}
 
 /* ---------- Riyadh edition: photo backdrop, Arabic masthead ---------- */
 :root{--ar-title:"Aref Ruqaa","Amiri","Noto Naskh Arabic",serif;--ar:"Amiri","Noto Naskh Arabic","Geeza Pro",serif}
-body{background:#2a2621 url("riyadh-photo.webp") center top / cover no-repeat fixed}
+body{background:#1d1820 url("riyadh-photo.webp") center top / cover no-repeat fixed}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:
   radial-gradient(rgba(0,0,0,.28) 1px,transparent 1.4px) 0 0/4px 4px,
   linear-gradient(180deg,rgba(18,13,20,0) 0%,rgba(18,13,20,.15) 45%,rgba(18,13,20,.75) 100%);pointer-events:none}
-@media (max-width:900px),(hover:none){body{background-attachment:scroll;background-size:auto 100vh;background-position:70% top}.cover{height:min(54vh,460px)}}
+@media (max-width:900px),(hover:none){body{background-attachment:scroll;background-size:auto 100vh;background-position:52% top}.cover{height:min(54vh,460px)}}
 .cover{position:relative;height:min(64vh,620px);min-height:240px;max-width:var(--w);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 var(--pad) 18px;color:#f6ead2}
 .cover .tag,.cover .cue{position:relative}
 .cover .tag{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;font-family:var(--type);font-size:12px;letter-spacing:.06em;background:rgba(18,13,20,.55);border:1px solid rgba(246,234,210,.45);padding:6px 10px;backdrop-filter:blur(3px)}
@@ -369,7 +369,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
 .sheet{margin-top:0!important}
 @media (min-width:1300px){.sheet{margin-bottom:40px}}
 .masthead{position:relative;isolation:isolate}
-.masthead::before{content:"";position:absolute;inset:-18px -2% -6px;z-index:-1;background:url("riyadh-print.jpg") center 58%/cover no-repeat;opacity:.16;mix-blend-mode:multiply;
+.masthead::before{content:"";position:absolute;inset:-18px -2% -6px;z-index:-1;background:url("riyadh-print.jpg") center 30%/cover no-repeat;opacity:.16;mix-blend-mode:multiply;
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 80%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 80%,transparent)}
 .masthead .ar-name{display:block;font-family:var(--ar-title);font-weight:700;font-size:clamp(30px,5.2vw,64px);line-height:1.15;color:var(--red);margin:4px 0 -4px}
 .dateline [lang=ar]{font-family:var(--ar);font-size:15px;line-height:1.2}
