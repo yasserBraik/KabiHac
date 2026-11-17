@@ -97,6 +97,7 @@ PAIRS = [
     ('<p class="ssub">Dispatches from a career that began at the freelance desk</p>', '<p class="ssub">رسائل من مسيرة بدأت على مكتب العمل الحر</p>', 1),
     ('<div class="sfolio">Section B · Pages B1 to B4</div>', '<div class="sfolio">القسم ب · الصفحات من ب1 إلى ب4</div>', 1),
     ('Startup desk · Two ventures, two endings', 'مكتب الشركات الناشئة · مشروعان ونهايتان', 1),
+    ('Beyond the day job · Held alongside the full-time roles above', 'خارج ساعات الدوام · أدوار تؤديها إلى جانب وظائفها بدوام كامل', 1),
     # features
     ('Eight case studies, each with the problem, the work and the measured result', 'ثمانية تحقيقات، في كلٍّ منها المشكلة والعمل والنتيجة المقيسة', 1),
     ('Section C · Open any feature to read it in full and try its demonstration', 'القسم ج · افتح أي تحقيق لتقرأه كاملًا وتجرّب عرضه الحي', 1),

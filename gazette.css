@@ -12,8 +12,10 @@
 @font-face{font-family:'Courier Prime';src:url(fonts/courier-prime-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:'Aref Ruqaa';src:url(fonts/aref-ruqaa-arabic-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:'Noto Kufi Arabic';src:url(fonts/noto-kufi-arabic-arabic-wght-normal.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:'Amiri';src:url(fonts/amiri-arabic-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Amiri';src:url(fonts/amiri-arabic-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Amiri';src:url(fonts/amiri-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Amiri';src:url(fonts/amiri-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:'Amiri';src:url(fonts/amiri-arabic-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}
+@font-face{font-family:'Amiri';src:url(fonts/amiri-arabic-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F}
 
 :root{
   --paper:#EDE3CC; --paper-2:#E5D8BB; --paper-3:#F4ECD9;
@@ -421,3 +423,12 @@ html[dir=rtl] .feat .open::after{content:" \2190"}
 html[lang=ar] .dateline [lang=ar]{font:inherit}
 .figs b,.stats b{white-space:nowrap}
 @media (max-width:520px){.figs b{font-size:clamp(17px,5.2vw,26px)}}
+
+/* ---------- beyond the day job ---------- */
+.sidelines{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));border-top:3px double var(--ink);border-bottom:1px solid var(--rule)}
+.sidelines li{padding:14px 16px 16px;border-inline-start:1px solid var(--rule)}
+.sidelines li:first-child{border-inline-start:0;padding-inline-start:0}
+.sidelines b{display:block;font-family:var(--display);font-weight:900;font-size:18px;line-height:1.2;margin:4px 0 2px}
+.sidelines em{display:block;font-size:14px;color:var(--ink-2)}
+.sidelines p{margin:6px 0 0;font-size:15px;line-height:1.5;text-align:start}
+@media (max-width:760px){.sidelines li{border-inline-start:0;border-top:1px solid var(--rule);padding-inline-start:0}.sidelines li:first-child{border-top:0}}

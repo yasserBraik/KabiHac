@@ -1,7 +1,7 @@
 (() => {
 'use strict';
 /* Content and wording come from data-en.js or data-ar.js; this file only renders and wires up behaviour. */
-const {T,NUMBERS,TICKER,ROLES,VENTURES,P,SKILLS,AWARDS,PATENTS,MEDIA,PUBS,TALKS,CERTS}=window.G;
+const {T,NUMBERS,TICKER,ROLES,VENTURES,SIDELINES,P,SKILLS,AWARDS,PATENTS,MEDIA,PUBS,TALKS,CERTS}=window.G;
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const go=id=>document.getElementById(id).scrollIntoView({behavior:reduce?'auto':'smooth'});
@@ -37,6 +37,7 @@ $('#biz').innerHTML=ROLES.map((r,i)=>{
 }).join('');
 $$('.contd').forEach(b=>b.addEventListener('click',()=>{ const s=b.closest('.story'), o=!s.classList.contains('open'); s.classList.toggle('open',o); b.setAttribute('aria-expanded',o); b.textContent=o?T.fold:T.continued(s.querySelectorAll('.more li').length); }));
 $('#ventures').innerHTML=VENTURES.map(v=>`<article><div style="display:flex;justify-content:space-between;gap:8px"><span class="dl kicker">${v.when}</span><span class="stamp${v.closed?' blue':''}">${v.stamp}</span></div><h3>${v.title}</h3><div class="role" style="font-family:var(--display);font-style:italic;margin-bottom:6px">${v.role}</div><p>${v.body}</p></article>`).join('');
+$('#sidelines').innerHTML=SIDELINES.map(([role,org,when,note])=>`<li><span class="dl kicker">${when}</span><b>${role}</b><em>${org}</em><p>${note}</p></li>`).join('');
 
 /* ---------- render: features ---------- */
 const techCount={}; P.forEach(p=>p.tech.forEach(t=>techCount[t]=(techCount[t]||0)+1));

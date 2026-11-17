@@ -18,7 +18,7 @@ def run(page_name, b, vp):
     pg.add_script_tag(content=AXE)
     res['axe'] = pg.evaluate("axe.run(document,{preload:false,runOnly:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}).then(r=>r.violations.map(v=>v.id+' '+v.nodes.slice(0,2).map(n=>n.target.join(' ')).join(' | ')))")
     # every section rendered its data
-    res['rendered'] = pg.evaluate("['#numbers dt','#run a','#biz article','#ventures article','#feat-grid .feat','#ads .ad','#patents li','#pubs li','#talks li','#roll li','#notices .notice'].map(s=>s+':'+document.querySelectorAll(s).length).join(' ')")
+    res['rendered'] = pg.evaluate("['#numbers dt','#run a','#biz article','#ventures article','#sidelines li','#feat-grid .feat','#ads .ad','#patents li','#pubs li','#talks li','#roll li','#notices .notice'].map(s=>s+':'+document.querySelectorAll(s).length).join(' ')")
     # reader: opens, focus moves in, Escape closes and returns focus
     pg.locator('[data-open="2"]').first.click(); pg.wait_for_timeout(500)
     res['reader_focus'] = pg.evaluate("document.getElementById('reader').contains(document.activeElement)")
