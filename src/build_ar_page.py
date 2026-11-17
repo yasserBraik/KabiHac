@@ -19,8 +19,8 @@ PAIRS = [
      '<meta property="og:description" content="مسيرة مهندسة منتجات من الرياض، في ورق الجرائد وبلغتين.">', 1),
     # cover
     ('Skip to the front page', 'انتقل إلى الصفحة الأولى', 1),
-    ('aria-label="Background illustration: Riyadh skyline at dusk, with Kingdom Centre and Al Faisaliah tower behind a Najdi mud-brick wall"',
-     'aria-label="رسم في الخلفية: أفق الرياض عند الغروب، ويظهر برج المملكة وبرج الفيصلية خلف سور نجدي من الطين"', 1),
+    ('aria-label="Photograph: the Riyadh skyline at golden hour, with Kingdom Centre and the Riyadh TV Tower"',
+     'aria-label="صورة: أفق الرياض في ساعة الغروب الذهبية، ويظهر برج المملكة وبرج الرياض للتلفزيون"', 1),
     ('<span class="tag">THE RIYADH EDITION<span lang="ar" dir="rtl">طبعة الرياض</span></span>', '<span class="tag">طبعة الرياض<span lang="en" dir="ltr">THE RIYADH EDITION</span></span>', 1),
     ("Read today's paper ↓", 'اقرأ عدد اليوم ↓', 1),
     # masthead
