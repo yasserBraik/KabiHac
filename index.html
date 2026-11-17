@@ -10,396 +10,9 @@
 <meta property="og:description" content="16 years, 40+ products, 9 million readers. A product engineer's career, in newsprint.">
 <link rel="icon" type="image/png" href="icon-64.png">
 <link rel="apple-touch-icon" href="icon-180.png">
-<style>
-/* Fonts ship with the site, so the paper looks the same on any network. */
-@font-face{font-family:'UnifrakturCook';src:url(fonts/unifrakturcook-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Playfair Display';src:url(fonts/playfair-display-latin-500-normal.woff2) format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Playfair Display';src:url(fonts/playfair-display-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Playfair Display';src:url(fonts/playfair-display-latin-900-normal.woff2) format('woff2');font-weight:900;font-style:normal;font-display:swap}
-@font-face{font-family:'Playfair Display';src:url(fonts/playfair-display-latin-500-italic.woff2) format('woff2');font-weight:500;font-style:italic;font-display:swap}
-@font-face{font-family:'Playfair Display';src:url(fonts/playfair-display-latin-700-italic.woff2) format('woff2');font-weight:700;font-style:italic;font-display:swap}
-@font-face{font-family:'Libre Caslon Text';src:url(fonts/libre-caslon-text-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Libre Caslon Text';src:url(fonts/libre-caslon-text-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Libre Caslon Text';src:url(fonts/libre-caslon-text-latin-400-italic.woff2) format('woff2');font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:'Courier Prime';src:url(fonts/courier-prime-latin-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Courier Prime';src:url(fonts/courier-prime-latin-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Aref Ruqaa';src:url(fonts/aref-ruqaa-arabic-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Amiri';src:url(fonts/amiri-arabic-400-normal.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Amiri';src:url(fonts/amiri-arabic-700-normal.woff2) format('woff2');font-weight:700;font-style:normal;font-display:swap}
-
-:root{
-  --paper:#EDE3CC; --paper-2:#E5D8BB; --paper-3:#F4ECD9;
-  --ink:#1F1A14; --ink-2:#4A4035; --ink-3:#64594b;
-  --rule:#2B241C; --hair:rgba(31,26,20,.28);
-  --red:#8E2A1E; --red-2:#B3412F; --blue:#24405E;
-  --black:"UnifrakturCook","Old English Text MT",serif;
-  --display:"Playfair Display",Georgia,serif;
-  --serif:"Libre Caslon Text",Georgia,serif;
-  --type:"Courier Prime","Courier New",monospace;
-  --w:1240px; --pad:clamp(16px,3.4vw,40px);
-  --ease:cubic-bezier(.2,.7,.2,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-body{margin:0;background:#2A2118;color:var(--ink);font-family:var(--serif);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
-/* the sheet of newsprint */
-.sheet{position:relative;max-width:var(--w);margin:0 auto;background:var(--paper);
-  background-image:
-    radial-gradient(ellipse at 20% 0%,rgba(255,255,255,.35),transparent 55%),
-    radial-gradient(ellipse at 100% 100%,rgba(120,90,40,.16),transparent 60%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .15 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-  box-shadow:0 0 0 1px rgba(0,0,0,.25),0 30px 80px rgba(0,0,0,.55)}
-@media (min-width:1300px){.sheet{margin:28px auto}}
-a{color:inherit}
-button,input,select,textarea{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--red);outline-offset:3px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;font-family:var(--type);text-decoration:none}
-.skip:focus{top:12px}
-.in{padding:0 var(--pad)}
-.kicker{font-family:var(--type);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
-.rule2{border:0;border-top:3px double var(--rule);margin:0}
-.rule1{border:0;border-top:1px solid var(--rule);margin:0}
-.dropcap::first-letter{float:left;font-family:var(--display);font-weight:900;font-size:4.1em;line-height:.82;padding:6px 8px 0 0;color:var(--ink)}
-.cols-2{column-count:2;column-gap:28px;column-rule:1px solid var(--hair)}
-.cols-3{column-count:3;column-gap:28px;column-rule:1px solid var(--hair)}
-@media (max-width:860px){.cols-2,.cols-3{column-count:1}}
-p{margin:0 0 .85em;hyphens:auto;text-align:justify}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--type);font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:11px 18px;border:2px solid var(--ink);background:transparent;cursor:pointer;transition:background .2s,color .2s,transform .2s var(--ease)}
-.btn:hover{background:var(--ink);color:var(--paper);transform:translateY(-1px)}
-.btn.solid{background:var(--ink);color:var(--paper)}
-.btn.solid:hover{background:var(--red);border-color:var(--red)}
-.stamp{display:inline-block;font-family:var(--type);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);border:2px solid var(--red);padding:4px 9px;transform:rotate(-4deg);opacity:.88;mix-blend-mode:multiply;
-  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.7'/%3E%3C/filter%3E%3Crect width='120' height='60' filter='url(%23r)'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='r'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 1.7'/%3E%3C/filter%3E%3Crect width='120' height='60' filter='url(%23r)'/%3E%3C/svg%3E")}
-.stamp.blue{color:var(--blue);border-color:var(--blue)}
-
-/* ---------- section strip (sticky index) ---------- */
-.strip{position:sticky;top:0;z-index:50;background:var(--paper-2);border-bottom:1px solid var(--rule);box-shadow:0 2px 0 rgba(0,0,0,.06)}
-.strip .in{display:flex;align-items:center;gap:12px;height:48px}
-.strip .mini{font-family:var(--black);font-size:22px;text-decoration:none;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;pointer-events:none}
-.strip.past .mini{opacity:1;transform:none;pointer-events:auto}
-.strip nav{flex:1;overflow-x:auto;scrollbar-width:none}
-.strip nav::-webkit-scrollbar{display:none}
-.strip ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;justify-content:center}
-.strip a.sec{display:flex;align-items:baseline;gap:6px;padding:6px 10px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:14px;white-space:nowrap;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
-.strip a.sec small{font-family:var(--type);font-size:10.5px;color:var(--ink-3);font-weight:400}
-.strip a.sec:hover{color:var(--red)}
-.strip a.sec[aria-current=true]{border-bottom-color:var(--red);color:var(--red)}
-.strip .menu{display:none;border:1px solid var(--ink);background:none;padding:6px 10px;font-family:var(--type);font-size:13px;cursor:pointer}
-.ink-bar{position:absolute;left:0;bottom:-1px;height:2px;background:var(--red);width:0}
-@media (max-width:960px){.strip nav{display:none}.strip .menu{display:block;margin-inline-start:auto}.strip .mini{opacity:1;transform:none;pointer-events:auto}}
-.drawer{position:fixed;inset:0;z-index:70;background:var(--paper);padding:20px var(--pad);transform:translateY(-100%);transition:transform .4s var(--ease);overflow-y:auto;visibility:hidden}
-.drawer.open{transform:none;visibility:visible}
-.drawer header{display:flex;justify-content:space-between;align-items:center;border-bottom:3px double var(--rule);padding-bottom:12px}
-.drawer header b{font-family:var(--black);font-size:28px;font-weight:700}
-.drawer a{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--hair);text-decoration:none;font-family:var(--display);font-weight:700;font-size:26px}
-.drawer a small{font-family:var(--type);font-size:13px;font-weight:400;color:var(--ink-3)}
-
-/* ---------- masthead ---------- */
-.ears{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding-top:22px}
-.ear{border:1px solid var(--rule);padding:8px 12px;font-family:var(--type);font-size:12px;line-height:1.45;max-width:230px}
-.ear b{display:block;font-family:var(--display);font-size:15px;line-height:1.2;margin-bottom:2px}
-.ear.r{justify-self:end;text-align:right}
-.motto{font-family:var(--display);font-style:italic;font-size:15px;text-align:center;color:var(--ink-2)}
-.masthead{text-align:center;padding:6px 0 4px}
-.masthead h1{margin:0;font-family:var(--black);font-weight:700;font-size:clamp(46px,10.4vw,132px);line-height:1;letter-spacing:.01em;color:var(--ink)}
-.masthead h1 span{display:inline-block}
-.dateline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 18px;font-family:var(--type);font-size:13px;padding:7px 0;border-block:1px solid var(--rule);margin-top:6px}
-.dateline+.rule2{margin-top:3px}
-@media (max-width:760px){.ears{grid-template-columns:1fr}.ear{display:none}.dateline{justify-content:center}.dateline span:nth-child(n+3){display:none}}
-
-/* ---------- ticker ---------- */
-.ticker{display:flex;align-items:stretch;border-bottom:1px solid var(--rule);overflow:hidden;font-family:var(--type);font-size:13.5px}
-.ticker .lbl{flex:0 0 auto;background:var(--ink);color:var(--paper);padding:8px 12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px;display:flex;align-items:center}
-.ticker .track{flex:1;overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
-.ticker .run{display:inline-flex;gap:38px;white-space:nowrap;padding:8px 0;animation:tick 60s linear infinite}
-.ticker:hover .run{animation-play-state:paused}
-.ticker .run span b{color:var(--red)}
-.ticker .run span::after{content:"\2756";margin-left:38px;color:var(--ink-3)}
-.ticker .pause{flex:0 0 auto;border:0;border-left:1px solid var(--rule);background:none;padding:0 12px;cursor:pointer;font-family:var(--type);font-size:12px}
-@keyframes tick{to{transform:translateX(-50%)}}
-
-/* ---------- front page ---------- */
-.front{display:grid;grid-template-columns:3fr 1fr;gap:0;padding-top:22px;padding-bottom:30px}
-.front .lead{padding-inline-end:26px;border-inline-end:1px solid var(--rule)}
-.front aside{padding-inline-start:22px}
-.headline{font-family:var(--display);font-weight:900;font-size:clamp(34px,5.6vw,72px);line-height:.98;letter-spacing:-.015em;margin:8px 0 12px}
-.deck{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(18px,1.9vw,23px);line-height:1.3;color:var(--ink-2);margin:0 0 14px}
-.byline{font-family:var(--type);font-size:12.5px;display:flex;flex-wrap:wrap;gap:4px 16px;border-block:1px solid var(--hair);padding:6px 0;margin-bottom:16px}
-.byline b{color:var(--red)}
-.front-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
-.plate{position:relative;border:1px solid var(--rule);background:var(--paper-3);padding:10px}
-.plate canvas{display:block;width:100%;aspect-ratio:4/3;background:#d9cba9}
-.plate figcaption{font-family:var(--serif);font-style:italic;font-size:13.5px;margin-top:8px;color:var(--ink-2)}
-.plate .stamp{position:absolute;right:16px;top:16px;background:rgba(237,227,204,.6)}
-.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.wires{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:16px;font-family:var(--type);font-size:13px}
-.wires a{text-decoration:none;border-bottom:1px dotted var(--ink-3)}
-.wires a:hover{color:var(--red);border-color:var(--red)}
-.box{border:1px solid var(--rule);padding:12px 14px;margin-bottom:18px;background:rgba(244,236,217,.45)}
-.box h3{margin:0 0 8px;font-family:var(--display);font-weight:900;font-size:19px;text-align:center;border-bottom:3px double var(--rule);padding-bottom:6px}
-.numbers dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:baseline}
-.numbers dt{font-family:var(--display);font-weight:900;font-size:26px;line-height:1;text-align:right;font-variant-numeric:lining-nums tabular-nums}
-.numbers dd{margin:0;font-size:13.5px;line-height:1.3}
-.index ol{list-style:none;margin:0;padding:0;font-size:14.5px}
-.index li a{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px dotted var(--hair);text-decoration:none}
-.index li a:hover{color:var(--red)}
-.index li small{font-family:var(--type);font-size:12px}
-.weather{font-size:13.5px;text-align:center}
-.weather b{display:block;font-family:var(--display);font-size:22px}
-@media (max-width:960px){.front{grid-template-columns:1fr}.front .lead{padding:0;border:0}.front aside{padding:20px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:16px}.front aside .box{margin:0}}
-@media (max-width:760px){.front-grid{grid-template-columns:1fr}.front aside{grid-template-columns:1fr}}
-
-/* ---------- section heads ---------- */
-.section{scroll-margin-top:48px;padding-top:30px;padding-bottom:40px;border-top:4px double var(--rule)}
-.shead{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin-bottom:6px}
-.shead::before,.shead::after{content:"";border-top:1px solid var(--rule)}
-.shead h2{margin:0;font-family:var(--display);font-weight:900;font-size:clamp(30px,4.4vw,52px);letter-spacing:.01em;line-height:1.05;text-align:center}
-.ssub{text-align:center;font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink-2);margin:0 0 6px}
-.sfolio{text-align:center;font-family:var(--type);font-size:12px;color:var(--ink-3);margin-bottom:24px}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.reveal.inview{opacity:1;transform:none}
-
-/* ---------- business (experience) ---------- */
-.biz{display:grid;grid-template-columns:repeat(12,1fr);gap:0}
-.story{padding:0 18px 18px;border-inline-start:1px solid var(--hair);margin-bottom:18px}
-.story:first-child{border-inline-start:0;padding-inline-start:0}
-.story.span-7{grid-column:span 7}.story.span-5{grid-column:span 5}.story.span-4{grid-column:span 4}.story.span-6{grid-column:span 6}.story.span-12{grid-column:span 12;padding-inline-start:0;border:0;border-top:1px solid var(--rule);padding-top:14px}
-.story h3{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.4vw,30px);line-height:1.08;margin:6px 0 6px}
-.story.small h3{font-size:20px}
-.story .role{font-family:var(--display);font-style:italic;font-size:15px;color:var(--ink-2);margin-bottom:8px}
-.story .dl{font-family:var(--type);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.story ul{margin:0;padding-inline-start:18px}
-.story li{margin:4px 0;font-size:15px;line-height:1.5}
-.story li::marker{content:"\261E  ";color:var(--red)}
-.story .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-.story .more>div{overflow:hidden}
-.story.open .more{grid-template-rows:1fr}
-.contd{margin-top:8px;background:none;border:0;padding:0;font-family:var(--type);font-size:13px;color:var(--red);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.biz .row-rule{grid-column:1/-1;border-top:1px solid var(--rule);margin:0 0 18px}
-@media (max-width:900px){.story,.story[class*=span-]{grid-column:1/-1!important;padding:0 0 16px!important;border:0!important;border-bottom:1px solid var(--hair)!important}}
-.ventures{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);margin-top:6px}
-.ventures article{padding:16px 18px}
-.ventures article+article{border-inline-start:1px solid var(--rule)}
-.ventures h3{font-family:var(--display);font-weight:900;font-size:24px;margin:6px 0}
-@media (max-width:760px){.ventures{grid-template-columns:1fr}.ventures article+article{border:0;border-top:1px solid var(--rule)}}
-
-/* ---------- features (projects) ---------- */
-.subjects{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin:-8px 0 22px;font-family:var(--type);font-size:13px}
-.subjects span{color:var(--ink-3);margin-inline-end:4px}
-.subjects button{border:1px solid var(--ink);background:none;padding:4px 10px;cursor:pointer;font-family:var(--type);font-size:12.5px}
-.subjects button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-.features{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
-.feat{grid-column:span 2;position:relative;border:1px solid var(--rule);background:rgba(244,236,217,.5);padding:16px 16px 14px;display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s,opacity .3s}
-.feat.big{grid-column:span 3}
-.feat:hover{transform:translateY(-3px) rotate(-.25deg);box-shadow:4px 6px 0 rgba(31,26,20,.18)}
-.feat.dim{opacity:.32}
-.feat .exhibit{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-.feat h3{font-family:var(--display);font-weight:900;font-size:clamp(22px,2.2vw,30px);line-height:1.05;margin:10px 0 6px}
-.feat .meta{font-family:var(--display);font-style:italic;font-size:14px;color:var(--ink-2);margin-bottom:10px}
-.feat p{font-size:15px;line-height:1.5;text-align:left}
-.feat .figs{display:flex;gap:16px;margin:auto 0 12px;padding-top:10px;border-top:1px solid var(--hair)}
-.feat .figs div{flex:1}
-.feat .figs b{display:block;font-family:var(--display);font-weight:900;font-size:22px;line-height:1.05}
-.feat .figs small{font-size:12px;line-height:1.25;display:block;color:var(--ink-2)}
-.feat .open{align-self:flex-start;margin-top:4px}
-.feat .open::after{content:" \2192"}
-@media (max-width:960px){.feat,.feat.big{grid-column:span 3}}
-@media (max-width:640px){.features{grid-template-columns:1fr}.feat,.feat.big{grid-column:1/-1}}
-
-/* reader (full article dialog) */
-.reader{position:fixed;inset:0;z-index:80;display:flex;justify-content:center;align-items:flex-start;padding:4vh 14px;background:rgba(20,15,10,.62);backdrop-filter:blur(3px);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
-.reader.open{opacity:1;visibility:visible}
-.reader .page{position:relative;width:min(920px,100%);border:1px solid var(--rule);box-shadow:0 30px 90px rgba(0,0,0,.5);padding:clamp(20px,4vw,44px);transform:translateY(20px) rotate(.4deg);transition:transform .45s var(--ease)}
-.reader.open .page{transform:none}
-.reader .close{position:absolute;right:14px;top:14px}
-.reader .top{padding-inline-end:84px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;border-bottom:3px double var(--rule);padding-bottom:8px;font-family:var(--type);font-size:12.5px}
-.reader h2{font-family:var(--display);font-weight:900;font-size:clamp(32px,5vw,58px);line-height:1;margin:16px 0 8px}
-.reader .deck{margin-bottom:12px}
-.reader .stats{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--rule);margin:16px 0}
-.reader .stats div{padding:12px 10px;text-align:center}
-.reader .stats div+div{border-inline-start:1px solid var(--hair)}
-.reader .stats b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(22px,3vw,34px);line-height:1.05}
-.reader .stats small{font-size:12.5px;color:var(--ink-2)}
-.reader h4{font-family:var(--type);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:0 0 4px;break-after:avoid}
-.reader .body p{text-align:justify}
-.reader .types{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;font-family:var(--type);font-size:12.5px}
-.reader .types span{border:1px solid var(--ink);padding:2px 8px}
-.reader .pull{font-family:var(--display);font-style:italic;font-weight:700;font-size:22px;line-height:1.25;text-align:center;border-block:2px solid var(--ink);padding:12px 6px;margin:4px 0 16px;break-inside:avoid}
-.reader .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:20px;border-top:1px solid var(--rule);padding-top:12px}
-.demo{border:1px dashed var(--ink);padding:14px;margin:6px 0 18px;background:var(--paper-3);break-inside:avoid}
-.demo .cap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-family:var(--type);font-size:12px;color:var(--ink-3);margin-bottom:10px}
-.toggle{display:inline-flex;border:1px solid var(--ink)}
-.toggle button{border:0;background:none;padding:4px 10px;font-family:var(--type);font-size:12px;cursor:pointer}
-.toggle button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-.bar{height:12px;background:rgba(31,26,20,.1);position:relative;margin:4px 0 10px}
-.bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);transition:width .8s var(--ease)}
-.bar.bad i{background:var(--red)}
-
-/* ---------- classifieds (skills) ---------- */
-.class-tools{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin:-8px 0 20px}
-.class-tools button{border:1px solid var(--ink);background:none;padding:5px 12px;font-family:var(--type);font-size:12.5px;cursor:pointer}
-.class-tools button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-.classifieds{column-count:4;column-gap:14px}
-@media (max-width:1060px){.classifieds{column-count:3}}
-@media (max-width:760px){.classifieds{column-count:2}}
-@media (max-width:480px){.classifieds{column-count:1}}
-.ad{break-inside:avoid;border:1px solid var(--rule);padding:10px 12px;margin-bottom:14px;background:rgba(244,236,217,.4);font-size:14px;line-height:1.45;transition:opacity .3s}
-.ad.hide{display:none}
-.ad h3{margin:0 0 4px;font-family:var(--display);font-weight:900;font-size:19px;text-transform:uppercase;letter-spacing:.02em;line-height:1.1}
-.ad .lvl{font-family:var(--type);font-size:12px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase}
-.ad .yrs{display:flex;align-items:center;gap:8px;margin:8px 0;font-family:var(--type);font-size:12px}
-.ad .yrs i{flex:1;height:7px;border:1px solid var(--ink);position:relative;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/18 - 1px),rgba(31,26,20,.35) calc(100%/18 - 1px) calc(100%/18))}
-.ad .yrs i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w,0);background:var(--ink);transition:width 1.1s var(--ease)}
-.ad .tools{font-family:var(--type);font-size:12.5px;line-height:1.5}
-.ad .inq{display:block;margin-top:6px;font-style:italic;font-size:13px;color:var(--ink-2)}
-.ad.feature{border-width:3px;border-style:double;text-align:center}
-.ad.feature h3{font-size:22px}
-
-/* ---------- research ---------- */
-.research{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-.research>div{padding:0 20px}
-.research>div+div{border-inline-start:1px solid var(--rule)}
-.research>div:first-child{padding-inline-start:0}.research>div:last-child{padding-inline-end:0}
-.research h3{font-family:var(--display);font-weight:900;font-size:22px;margin:0 0 4px}
-.research .hint{font-family:var(--type);font-size:12px;color:var(--ink-3);margin-bottom:10px}
-.research ol,.research ul{list-style:none;margin:0 0 22px;padding:0}
-.research li{padding:9px 0;border-bottom:1px dotted var(--hair);font-size:14.5px;line-height:1.4}
-.research li b{display:block;font-weight:700}
-.research li em{display:block;font-size:13px;color:var(--ink-2)}
-.research li small{font-family:var(--type);font-size:12px;color:var(--red)}
-@media (max-width:900px){.research{grid-template-columns:1fr}.research>div{padding:0!important;border:0!important}}
-
-/* ---------- honours ---------- */
-.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:22px}
-.extra{position:relative;border:3px double var(--rule);padding:16px;text-align:center;background:rgba(244,236,217,.5);overflow:hidden}
-.extra .ed{font-family:var(--type);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-.extra .cry{font-family:var(--black);font-size:34px;line-height:1.1;margin:8px 0 2px;color:var(--red)}
-.extra h3{font-family:var(--display);font-weight:900;font-size:21px;line-height:1.12;text-transform:uppercase;margin:8px 0}
-.extra p{font-size:14px;text-align:center;margin:0}
-.extra .stamp{position:absolute;right:-6px;top:8px;transform:rotate(12deg)}
-.extra .ed{display:block;padding-inline-end:40px;padding-inline-start:40px}
-@media (max-width:900px){.extras{grid-template-columns:1fr}}
-.roll{border-top:1px solid var(--rule)}
-.roll li{display:grid;grid-template-columns:60px 1fr auto;gap:12px;padding:9px 0;border-bottom:1px dotted var(--hair);align-items:baseline}
-.roll ol{list-style:none;margin:0;padding:0}
-.roll b{font-family:var(--display);font-weight:900;font-size:18px}
-.roll span{font-size:15px}
-.roll em{font-size:13px;color:var(--ink-2);text-align:right}
-@media (max-width:640px){.roll li{grid-template-columns:48px 1fr}.roll em{grid-column:2;text-align:left}}
-
-/* ---------- academy ---------- */
-.academy{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-block:1px solid var(--rule)}
-.academy article{padding:16px 16px 14px}
-.academy article+article{border-inline-start:1px solid var(--hair)}
-.academy .yr{font-family:var(--type);font-size:12px;color:var(--red)}
-.academy h3{font-family:var(--display);font-weight:900;font-size:20px;line-height:1.15;margin:6px 0}
-.academy .inst{font-style:italic;font-size:14px;color:var(--ink-2)}
-.academy ul{margin:8px 0 0;padding-inline-start:16px;font-size:14px}
-.academy li{margin:3px 0}
-@media (max-width:960px){.academy{grid-template-columns:1fr 1fr}.academy article:nth-child(3){border-inline-start:0}.academy article:nth-child(n+3){border-top:1px solid var(--hair)}}
-@media (max-width:560px){.academy{grid-template-columns:1fr}.academy article{border:0!important;border-top:1px solid var(--hair)!important}}
-.notices-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin:30px 0 12px}
-.notices-head h3{margin:0;font-family:var(--display);font-weight:900;font-size:28px}
-.notices-head p{margin:2px 0 0;font-style:italic;color:var(--ink-2);text-align:left}
-.notices-tools{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.notices-tools input{border:1px solid var(--ink);background:var(--paper-3);padding:6px 10px;font-family:var(--type);font-size:13px;width:220px}
-.notices-tools button{border:1px solid var(--ink);background:none;padding:5px 10px;font-family:var(--type);font-size:12px;cursor:pointer}
-.notices-tools button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-.notices{column-count:3;column-gap:22px;column-rule:1px solid var(--hair)}
-@media (max-width:900px){.notices{column-count:2}}@media (max-width:560px){.notices{column-count:1}}
-.notice{break-inside:avoid;padding:8px 0 10px;border-bottom:1px dotted var(--hair);font-size:14px;line-height:1.4}
-.notice.hide{display:none}
-.notice b{display:block}
-.notice em{display:block;font-size:13px;color:var(--ink-2)}
-.notice .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--type);font-size:11.5px;margin-top:3px}
-.notice .st{font-weight:700}
-.notice .st.expired{color:var(--ink-3);text-decoration:line-through}
-.notice .st.progress{color:var(--red)}
-.empty-note{font-style:italic;color:var(--ink-2)}
-
-/* ---------- letters (contact) ---------- */
-.letters{display:grid;grid-template-columns:1fr 1.5fr;gap:30px;align-items:start}
-.office{border:1px solid var(--rule);padding:16px 18px}
-.office h3{margin:0 0 4px;font-family:var(--display);font-weight:900;font-size:24px}
-.office p{text-align:left;font-style:italic;color:var(--ink-2)}
-.office dl{margin:12px 0 0;display:grid;grid-template-columns:auto 1fr;gap:0}
-.office dt,.office dd{padding:8px 0;border-top:1px dotted var(--hair);margin:0}
-.office dt{font-family:var(--type);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);padding-inline-end:14px}
-.office dd{font-size:15px;overflow-wrap:anywhere}
-.office dd a{text-decoration:none;border-bottom:1px dotted var(--ink-3)}
-.office .copy{margin-inline-start:6px;border:1px solid var(--ink);background:none;font-family:var(--type);font-size:11px;padding:1px 6px;cursor:pointer}
-.letter{position:relative;background:var(--paper-3);border:1px solid var(--rule);padding:clamp(18px,3vw,30px);box-shadow:5px 6px 0 rgba(31,26,20,.14);background-image:repeating-linear-gradient(transparent 0 31px,rgba(36,64,94,.13) 31px 32px)}
-.letter .head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-bottom:3px double var(--rule);padding-bottom:8px;margin-bottom:14px}
-.letter .head b{font-family:var(--display);font-weight:900;font-size:clamp(24px,3vw,34px);line-height:1}
-.letter .head span{font-family:var(--type);font-size:12px;text-align:right}
-.salute{font-family:var(--display);font-style:italic;font-size:19px;margin:0 0 8px}
-.lf{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
-.lf .full{grid-column:1/-1}
-.lf label{display:block;font-family:var(--type);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:2px}
-.lf input,.lf select,.lf textarea{width:100%;border:0;border-bottom:1px solid var(--ink);background:transparent;padding:6px 2px;font-family:var(--serif);font-size:16px;line-height:1.6}
-.lf textarea{min-height:128px;resize:vertical;line-height:32px;padding-top:0}
-.lf select{appearance:none;cursor:pointer}
-.lf input:focus,.lf select:focus,.lf textarea:focus{outline:none;border-bottom:2px solid var(--red)}
-.lf [aria-invalid=true]{border-bottom:2px solid var(--red);background:rgba(142,42,30,.06)}
-.lf .err{display:block;font-family:var(--type);font-size:12px;color:var(--red);min-height:0;margin-top:3px}
-.lf .count{float:right;font-family:var(--type);font-size:11px;color:var(--ink-3)}
-.sign{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
-.sign p{margin:0;font-family:var(--type);font-size:12px;color:var(--ink-2);text-align:left;max-width:40ch}
-.sealed{display:none;margin-top:18px;border:2px solid var(--ink);padding:16px;background:var(--paper)}
-.sealed.show{display:block;animation:stampIn .5s var(--ease)}
-@keyframes stampIn{from{opacity:0;transform:scale(1.04) rotate(-1deg)}to{opacity:1;transform:none}}
-.sealed h4{margin:0 0 4px;font-family:var(--display);font-weight:900;font-size:20px}
-.sealed pre{white-space:pre-wrap;font-family:var(--type);font-size:13px;background:var(--paper-3);border:1px dotted var(--ink-3);padding:10px;max-height:220px;overflow:auto;margin:10px 0}
-.sealed .row{display:flex;flex-wrap:wrap;gap:8px}
-@media (max-width:900px){.letters{grid-template-columns:1fr}.lf{grid-template-columns:1fr}}
-
-/* ---------- colophon ---------- */
-.colophon{border-top:4px double var(--rule);padding:18px 0 26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;font-family:var(--type);font-size:12px;color:var(--ink-2)}
-.colophon b{font-family:var(--black);font-size:22px;color:var(--ink);font-weight:700}
-.colophon button{border:1px solid var(--ink);background:none;font-family:var(--type);font-size:12px;padding:6px 10px;cursor:pointer}
-.to-front{position:fixed;right:18px;bottom:18px;z-index:40;border:2px solid var(--ink);background:var(--paper);font-family:var(--type);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:9px 12px;cursor:pointer;box-shadow:3px 4px 0 rgba(0,0,0,.25);opacity:0;transform:translateY(10px);pointer-events:none;transition:all .3s var(--ease)}
-.to-front.show{opacity:1;transform:none;pointer-events:auto}
-.toast{position:fixed;left:50%;bottom:22px;z-index:95;transform:translate(-50%,16px);background:var(--ink);color:var(--paper);font-family:var(--type);font-size:13px;padding:9px 16px;opacity:0;pointer-events:none;transition:all .3s var(--ease)}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-
-/* ---------- Riyadh edition: photo backdrop, Arabic masthead ---------- */
-:root{--ar-title:"Aref Ruqaa","Amiri","Noto Naskh Arabic",serif;--ar:"Amiri","Noto Naskh Arabic","Geeza Pro",serif}
-body{background:#120d14 url("riyadh-night.jpg") center top / cover no-repeat fixed}
-body::before{content:"";position:fixed;inset:0;z-index:-1;background:
-  radial-gradient(rgba(0,0,0,.28) 1px,transparent 1.4px) 0 0/4px 4px,
-  linear-gradient(180deg,rgba(18,13,20,0) 0%,rgba(18,13,20,.15) 45%,rgba(18,13,20,.75) 100%);pointer-events:none}
-@media (max-width:900px),(hover:none){body{background-attachment:scroll;background-size:auto 100vh;background-position:center top}}
-.cover{position:relative;height:min(46vh,420px);min-height:220px;max-width:var(--w);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:0 var(--pad) 18px;color:#f6ead2}
-.cover .tag,.cover .cue{position:relative}
-.cover .tag{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;font-family:var(--type);font-size:12px;letter-spacing:.06em;background:rgba(18,13,20,.55);border:1px solid rgba(246,234,210,.45);padding:6px 10px;backdrop-filter:blur(3px)}
-.cover .tag [lang=ar]{font-family:var(--ar);font-size:16px;letter-spacing:0}
-@media (max-width:560px){.cover .cue{display:none}}
-.cover .cue{font-family:var(--type);font-size:12px;text-decoration:none;color:inherit;border-bottom:1px solid currentColor}
-.sheet{margin-top:0!important}
-@media (min-width:1300px){.sheet{margin-bottom:40px}}
-.masthead{position:relative;isolation:isolate}
-.masthead::before{content:"";position:absolute;inset:-18px -2% -6px;z-index:-1;background:url("riyadh-print.png") center 62%/cover no-repeat;opacity:.16;mix-blend-mode:multiply;
-  -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 80%,transparent);mask-image:linear-gradient(180deg,transparent,#000 30%,#000 80%,transparent)}
-.masthead .ar-name{display:block;font-family:var(--ar-title);font-weight:700;font-size:clamp(30px,5.2vw,64px);line-height:1.15;color:var(--red);margin:4px 0 -4px}
-.dateline [lang=ar]{font-family:var(--ar);font-size:15px;line-height:1.2}
-.shead .ar{display:block;font-family:var(--ar-title);font-weight:700;font-size:clamp(18px,2.2vw,26px);color:var(--red);line-height:1.2;margin-top:2px}
-.ear [lang=ar]{font-family:var(--ar);font-size:15px}
-
-/* ---------- the seal ---------- */
-@media (max-width:760px){.ears{grid-template-columns:minmax(0,1fr) auto;align-items:center}.ears .seal{margin:0}.ears .seal svg{width:88px;height:88px}.motto{text-align:left;font-size:14px}.deck{text-align:left;hyphens:manual}}
-
-.ears .seal{justify-self:end;transform:rotate(-8deg);margin:-6px 4px -14px 0;line-height:0}
-.ears .seal svg{display:block;width:150px;height:150px}
-.strip .mini{display:inline-flex;align-items:center;gap:10px}
-.strip .mini svg{flex:none;width:26px;height:26px}
-.colophon > svg{flex:none;width:84px;height:84px;transform:rotate(-6deg)}
-.ticker .run a{color:inherit;text-decoration:none}
-.ticker .run a:hover{color:var(--red);text-decoration:underline}
-.ticker .run a b{color:var(--red);margin-right:6px}
-.ticker .run a::after{content:"\2756";margin-left:38px;color:var(--ink-3)}
-</style>
+<link rel="stylesheet" href="gazette.css">
+<link rel="alternate" hreflang="en" href="index.html">
+<link rel="alternate" hreflang="ar" href="ar.html">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the front page</a>
@@ -433,7 +46,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
  <circle cx="300" cy="300" r="204" fill="none" stroke-width="2.5"/>
  <circle cx="300" cy="300" r="196" fill="none" stroke-width="1.2"/>
  <text stroke="none" font-family="Playfair Display" font-weight="900" font-size="35" letter-spacing="5"><textPath href="#topmast" startOffset="50%" text-anchor="middle">YARA AL-MANSOURI, PhD</textPath></text>
- <text stroke="none" font-family="Playfair Display" font-weight="700" font-size="25" letter-spacing="7"><textPath href="#botmast" startOffset="50%" text-anchor="middle">RIYADH · EST. 2008</textPath></text>
+ <text stroke="none" font-family="Playfair Display" font-weight="700" font-size="25" letter-spacing="7"><textPath href="#botmast" startOffset="50%" text-anchor="middle">RIYADH · EST. 2010</textPath></text>
  <text stroke="none" x="62" y="309" font-size="26" text-anchor="middle" font-family="serif">✦</text>
  <text stroke="none" x="538" y="309" font-size="26" text-anchor="middle" font-family="serif">✦</text>
  <text stroke="none" x="214" y="322" font-family="UnifrakturCook" font-weight="700" font-size="168" text-anchor="middle">Y</text>
@@ -481,6 +94,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
         <li><a class="sec" href="#letters">Letters <small>H1</small></a></li>
       </ul>
     </nav>
+    <a class="lang" href="ar.html" hreflang="ar" lang="ar" data-lang>عربي<span class="sr-only"> (Arabic edition)</span></a>
     <button class="menu" type="button" aria-expanded="false" aria-controls="drawer">Sections</button>
   </div>
   <div class="ink-bar" id="ink-bar" aria-hidden="true"></div>
@@ -498,6 +112,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
     <a href="#academy">Academy <small>G1</small></a>
     <a href="#letters">Letters to the Editor <small>H1</small></a>
   </nav>
+  <a class="lang" href="ar.html" hreflang="ar" lang="ar" data-lang>اقرأ بالعربية</a>
 </div>
 
 <!-- MARKET REPORT -->
@@ -558,7 +173,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
 <!-- BUSINESS -->
 <section id="business" class="in section reveal" aria-labelledby="biz-h">
   <div class="shead"><h2 id="biz-h">The Business Pages<span class="ar" lang="ar" dir="rtl">الصفحات الاقتصادية</span></h2></div>
-  <p class="ssub">Dispatches from sixteen years on the job, from freelance desk to principal engineer</p>
+  <p class="ssub">Dispatches from a career that began at the freelance desk</p>
   <div class="sfolio">Section B · Pages B1 to B4</div>
   <div class="biz" id="biz"></div>
   <h3 class="kicker" style="margin:26px 0 8px;font-size:13px">Startup desk · Two ventures, two endings</h3>
@@ -616,21 +231,21 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
       <span class="ed">Special Edition · 2025</span>
       <div class="cry" aria-hidden="true">Extra! Extra!</div>
       <h3>Al-Mansouri Named Design Technology Leader of the Year</h3>
-      <p>Gulf Design Week Awards cite Mizan, the bilingual design system now used by all nine product teams.</p>
+      <p>Gulf Design Week Awards cite Mizan, the bilingual design system behind a fintech super-app.</p>
       <span class="stamp">Winner</span>
     </article>
     <article class="extra">
       <span class="ed">Late Edition · 2024</span>
       <div class="cry" aria-hidden="true">Extra! Extra!</div>
       <h3>Savings Goals Takes Best Fintech Experience</h3>
-      <p>Arab Fintech Excellence Awards recognise a feature that saw 610,000 goals opened in six months.</p>
+      <p>Arab Fintech Excellence Awards recognise a savings feature built from research with real savers.</p>
       <span class="stamp">Winner</span>
     </article>
     <article class="extra">
       <span class="ed">Evening Edition · 2022</span>
       <div class="cry" aria-hidden="true">Extra! Extra!</div>
       <h3>Thesis on Arabic Type Wins Best Doctoral Thesis in HCI</h3>
-      <p>Eastmoor Institute of Technology honours research tested with 312 readers. A patent followed in 2024.</p>
+      <p>Eastmoor Institute of Technology honours her research on adaptive Arabic type. A patent followed.</p>
       <span class="stamp blue">Honoured</span>
     </article>
   </div>
@@ -731,7 +346,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
  <circle cx="300" cy="300" r="204" fill="none" stroke-width="2.5"/>
  <circle cx="300" cy="300" r="196" fill="none" stroke-width="1.2"/>
  <text stroke="none" font-family="Playfair Display" font-weight="900" font-size="35" letter-spacing="5"><textPath href="#topfoot" startOffset="50%" text-anchor="middle">YARA AL-MANSOURI, PhD</textPath></text>
- <text stroke="none" font-family="Playfair Display" font-weight="700" font-size="25" letter-spacing="7"><textPath href="#botfoot" startOffset="50%" text-anchor="middle">RIYADH · EST. 2008</textPath></text>
+ <text stroke="none" font-family="Playfair Display" font-weight="700" font-size="25" letter-spacing="7"><textPath href="#botfoot" startOffset="50%" text-anchor="middle">RIYADH · EST. 2010</textPath></text>
  <text stroke="none" x="62" y="309" font-size="26" text-anchor="middle" font-family="serif">✦</text>
  <text stroke="none" x="538" y="309" font-size="26" text-anchor="middle" font-family="serif">✦</text>
  <text stroke="none" x="214" y="322" font-family="UnifrakturCook" font-weight="700" font-size="168" text-anchor="middle">Y</text>
@@ -755,248 +370,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;background:
 </div>
 <div class="toast" role="status" aria-live="polite" id="toast"></div>
 
-<script>
-(() => {
-const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const go=id=>document.getElementById(id).scrollIntoView({behavior:reduce?'auto':'smooth'});
-
-/* ---------- dateline: today's date ---------- */
-try{ $('#hijri').textContent=new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(new Date()); }catch(e){}
-try{ $('#today').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}); }catch(e){}
-
-/* ---------- toast + copy ---------- */
-let tt; const toast=m=>{ const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2300); };
-async function copy(text,ok){ try{ await navigator.clipboard.writeText(text); toast(ok); }catch(e){ const a=document.createElement('textarea'); a.value=text; a.style.position='fixed'; a.style.opacity=0; document.body.appendChild(a); a.select(); let r=false; try{ r=document.execCommand('copy'); }catch(_){ } a.remove(); toast(r?ok:'Copy is blocked here. Select the text and copy it by hand.'); } }
-$$('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy,'Address copied')));
-
-/* ---------- data (all from the CV) ---------- */
-const NUMBERS=[['16','years in the trade, since 2010'],['40+','products shipped'],['9M+','people reached'],['1,400+','students taught']];
-const TICKER=[['#business','B1','From the freelance desk to principal engineer'],['#features','C1','Eight case studies, each with a working demo'],['#classifieds','D1','Skills for hire, by years of practice'],['#research','E1','Patents, papers and the lecture circuit'],['#honours','F1','The honours list, 2010 to 2025'],['#academy','G1','Degrees and certificates, searchable'],['#letters','H1','Write to the editor']];
-const ROLES=[
- {span:7,when:'Riyadh · Sep 2023 to Present',title:'Principal Product Engineer & Design Technology Lead',org:'Faseela Ventures',stamp:'Current post',pts:['Sets the front-end and design-system direction for 9 product teams across payments, savings and rewards in a fintech super-app with 4.2 million users.','Built Mizan, the bilingual design system every team now uses (Feature A).','Led the web rebuild in Next.js and TypeScript, reducing Largest Contentful Paint from 4.8 s to 1.6 s.','Introduced an accessibility review for every release.','Led research and design for Savings Goals (Feature E).'],shown:3,tech:'Next.js, TypeScript, Tailwind CSS, React Native, GraphQL, AWS'},
- {span:5,when:'Riyadh · Mar 2021 to Aug 2023',title:'Director of Product Engineering',org:'Zayna Health Tech',pts:['Led 64 people across 7 squads (engineering, design, quality and data) with an annual budget of SAR 21 million.','Launched the telemedicine platform at national scale (Feature B).','Cut the app crash rate from 2.4% to 0.3% and raised the app-store rating from 3.6 to 4.7.','Took the platform through two health-data security audits with zero major findings.'],shown:2,tech:'React, React Native, Node.js, PostgreSQL, Google Cloud, Kubernetes'},
- {rule:true},
- {span:4,small:true,when:'Riyadh · Jan 2019 to Feb 2021',title:'Engineering Manager, Patient Apps',org:'Zayna Health Tech',pts:['Grew the patient apps team from 6 to 22 people; hired and mentored 4 team leads.','Shipped appointment booking used by 1.8 million patients across 140 clinics.','Shortened the release cycle from 6 weeks to 1 week with CI/CD and feature flags.'],shown:2},
- {span:4,small:true,when:'Riyadh · Jul 2017 to Dec 2018',title:'Senior Front-End Engineer',org:'Zayna Health Tech',pts:['Rebuilt the clinic dashboard in React, cutting doctors’ average task time by 27%.','Created the first shared component library, which later grew into the Zayna design system.'],shown:2},
- {span:4,small:true,when:'London · Oct 2012 to Mar 2015',title:'UX Engineer, then Senior UX Engineer',org:'Brightwell Studio',pts:['Led the studio’s first Arabic, right-to-left project, for a Gulf travel client.','Designed and built responsive websites for 14 clients in retail, banking and the public sector.','Delivered 2 projects that won industry awards.','Mentored 3 junior designers and ran the studio’s monthly front-end guild.'],shown:2},
- {span:12,small:true,when:'Earlier dispatches · 2008 to 2017',title:'From the freelance desk to the research lab',org:'Riyadh and Northbridge',pts:['Freelance graphic and web designer (part-time), Sep 2008 to Jun 2010: logos, printed material and websites for 35 clients while at university.','Junior Web Developer, Mirqab Digital Agency, Jul 2010 to Aug 2011: more than 20 websites in HTML, CSS, jQuery and PHP.','Research Assistant (part-time), University of Northbridge Interaction Lab, Jan to Sep 2012: ran 30 usability sessions on bilingual navigation menus and co-authored a technical report.','Career break, Jan to Jun 2017: family relocation and volunteering, including a 12-week web development course for 45 adult learners with Code for Community.'],shown:4,cols:true}
-];
-const VENTURES=[
- {when:'Riyadh · Feb 2019 to Nov 2022',title:'Qalam Learn',role:'Co-founder (part-time)',stamp:'Acquired',body:'Co-founded an Arabic-first coding education platform and designed and built its code editor (Feature F). She grew the team to 9 people and led product until Mirqab Group acquired the company in November 2022.'},
- {when:'Riyadh · Apr 2015 to Dec 2016',title:'Rafeeq Rides',role:'Co-founder & Chief Technology Officer',stamp:'Closed',body:'Built a ride-sharing app for university students and raised its seed funding. The company closed after a market change; the full story, and what she learned, is Feature H.'}
-];
-const P=[
- {id:'mizan',big:true,ex:'A',stamp:'Award winner',name:'Mizan Design System',org:'Faseela Ventures',when:'Oct 2023 to Jun 2025',role:'Lead designer and engineer',team:'Team of 6',deck:'Nine teams, four button styles and eleven greens became one bilingual system.',figs:[['180','components'],['38%','faster UI builds'],['41→96%','WCAG 2.2 AA screens']],problem:'Nine product teams built the same interface parts in different ways. The app had 4 button styles and 11 shades of green.',action:'Yara audited 1,300 screens, defined design tokens, and built and documented the components in both Figma and code. She also introduced an accessibility review for every release.',result:'Every team adopted it. Mizan won Design Technology Leader of the Year at the Gulf Design Week Awards 2025, and a related bilingual theming system is patent-pending.',quote:'Eleven shades of green became one token.',tech:['React','TypeScript','Tailwind CSS','Storybook','Figma tokens'],demo:'mizan'},
- {id:'telemedicine',big:true,ex:'B',stamp:'National scale',name:'National Telemedicine Platform',org:'Zayna Health Tech',when:'May 2021 to Dec 2022',role:'Product engineering lead',team:'Team of 31',deck:'A national video-consultation service, rebuilt so patients waited minutes, not half an hour.',figs:[['3.1M','consultations in 2022'],['22→6','minutes average wait'],['20→3%','dropped calls']],problem:'Patients waited too long for a video consultation, and too many calls dropped.',action:'Yara led the redesign of the patient queue, the doctor console and the video layer. As Director she also took the platform through two health-data security audits.',result:'Both security audits closed with zero major findings, and the platform won the Digital Health Innovation Award 2021.',quote:'Minutes, not half an hour.',tech:['React','React Native','WebRTC','Node.js','Google Cloud'],demo:'tele'},
- {id:'hirfa',ex:'C',stamp:'Open source',name:'Hirfa UI',org:'Founder and lead maintainer',when:'Mar 2020 to Present',role:'Founder and lead maintainer',team:'210 contributors',deck:'A React component library built for right-to-left from day one.',figs:[['9,800','GitHub stars'],['1.2M','npm downloads a year']],problem:'Popular component libraries handled right-to-left layouts poorly, so Arabic products had to patch them.',action:'Yara designed and built 95 components with mirrored layouts, Arabic typography presets and full keyboard support, and she leads the community that maintains it.',result:'Hirfa UI won the Open Source Impact Award 2022 from the Arab Open Source Foundation.',quote:'Components that mirror without a separate stylesheet.',tech:['React','TypeScript','CSS logical properties','Storybook'],link:['Visit the repository','https://github.example/yara-mansouri'],demo:'hirfa'},
- {id:'khatt',ex:'D',stamp:'Patent granted',name:'Khatt Typography Engine',org:'PhD research, Eastmoor Institute of Technology',when:'Sep 2019 to Jul 2022',role:'Researcher and sole developer',team:'Solo',deck:'Arabic text that adapts to its reader and its screen.',figs:[['+19%','reading speed'],['−31%','reading errors']],problem:'Arabic text on screens is often too small, too dense and hard to scan.',action:'Yara built an engine that adjusts Arabic font size, spacing and line length to the reader and the screen, then tested it with 312 participants as the core of her PhD.',result:'The method was granted a patent in June 2024 (SA 11223), and the thesis won Best Doctoral Thesis in HCI 2022.',quote:'The text adapts to the reader, not the other way round.',tech:['TypeScript','Canvas API','Python'],demo:'khatt'},
- {id:'savings',ex:'E',stamp:'Best Fintech 2024',name:'Savings Goals',org:'Faseela Ventures',when:'Jan 2024 to Aug 2024',role:'Research and design lead',team:'Team of 8',deck:'A goal-setting flow built from research with real savers.',figs:[['610k','goals opened'],['SAR 2,300','average per goal']],problem:'70% of users had never saved money inside the app.',action:'Yara ran 48 interviews in 5 cities, tested 3 prototypes and designed the final goal-setting flow.',result:'Savings Goals won Best Fintech Experience at the Arab Fintech Excellence Awards 2024.',quote:'Research first, then the flow.',tech:['React Native','GraphQL','Figma'],demo:'savings'},
- {id:'qalam',ex:'F',stamp:'Acquired',name:'Qalam Learn Code Editor',org:'Qalam Learn',when:'Feb 2019 to Apr 2021',role:'Co-founder, design and front-end',team:'Team of 4',deck:'A browser code editor for Arabic-speaking learners.',figs:[['18→46%','course completion'],['230k','learners, 14 countries']],problem:'Learners quit when English error messages stopped their code.',action:'Yara designed and built a browser code editor that explains errors in plain Arabic and suggests the next step.',result:'',quote:'Errors, explained in plain Arabic.',tech:['Vue','TypeScript','Monaco Editor','Firebase'],demo:'qalam'},
- {id:'dalil',ex:'G',stamp:'42 checks',name:'Dalil Accessibility Toolkit',org:'Side project',when:'Jan 2022 to Sep 2022',role:'Designer and developer',team:'Solo',deck:'A browser extension that catches what other checkers miss on Arabic pages.',figs:[['3,400','developers'],['22','countries']],problem:'Accessibility checkers missed issues specific to Arabic and right-to-left pages.',action:'Yara built a browser extension that flags Arabic-specific accessibility issues and explains how to fix each one.',result:'',quote:'Every issue comes with its fix.',tech:['JavaScript','Chrome Extensions API','axe-core'],demo:'dalil'},
- {id:'rafeeq',ex:'H',stamp:'Post-mortem',name:'Rafeeq Rides Matching',org:'Rafeeq Rides',when:'Apr 2015 to Dec 2016',role:'Co-founder and CTO',team:'Team of 11',deck:'Safe, affordable rides for university students.',figs:[['140k','rides in 20 months'],['26k','sign-ups']],problem:'University students had few safe and affordable ways to commute.',action:'Yara designed the matching system that paired riders by campus, timetable and route, and as CTO led the team after raising SAR 3.5 million in seed funding.',result:'The company closed in December 2016 after a market change. Her public post-mortem was read by 80,000 people.',quote:'An honest account of why it closed.',tech:['React Native','Node.js','MongoDB','Google Maps APIs'],demo:null}
-];
-const SKILLS=[
- ['Product Design','Expert',18,'Figma, design systems, prototyping, motion design, information architecture','Seasoned designer, 18 years, seeks product to shape.'],
- ['Front-End Engineering','Expert',16,'TypeScript, JavaScript, React, Next.js, Vue, Tailwind CSS, Web Components','Fast, accessible interfaces built to order.'],
- ['User Research','Expert',14,'Interviews, usability testing, diary studies, A/B testing, eye-tracking','Will listen to your customers so you don’t have to guess.'],
- ['Accessibility','Expert',11,'WCAG 2.2 AA, ARIA, screen-reader testing, Arabic right-to-left accessibility','Screens made usable by everyone. Audits on request.'],
- ['Back-End and APIs','Advanced',10,'Node.js, NestJS, GraphQL, REST, PostgreSQL, Redis','Servers and schemas, sturdy and documented.'],
- ['Leadership','Expert',9,'Hiring, organisation design, OKRs, budgeting, stakeholder management, mentoring','Teams grown from 6 to 22, and up to 64.'],
- ['Mobile','Advanced',8,'React Native, Flutter, Swift (basic)','Apps for pocket and clinic alike.'],
- ['Cloud and DevOps','Advanced',7,'AWS, Google Cloud, Docker, Kubernetes, Terraform, GitHub Actions','Weekly releases where there were six-week ones.'],
- ['Security and Compliance','Intermediate',6,'Secure development lifecycle, PCI DSS, health-data privacy, threat modelling','Two audits, zero major findings.'],
- ['Data and AI','Intermediate',5,'Python, SQL, data visualisation, recommendation systems, AI product features','Numbers made useful.']
-];
-const AWARDS=[['2025','Design Technology Leader of the Year','Gulf Design Week Awards · Mizan Design System'],['2024','Best Fintech Experience','Arab Fintech Excellence Awards · Savings Goals'],['2023','Top 40 Under 40 in Saudi Tech','Riyadh Tech Review · career achievement'],['2022','Best Doctoral Thesis in HCI','Eastmoor Institute of Technology · PhD thesis'],['2022','Open Source Impact Award','Arab Open Source Foundation · Hirfa UI'],['2021','Digital Health Innovation Award','Middle East Health Informatics Board · telemedicine platform'],['2020','Women in Tech Leadership Award','Saudi Women in Design Network · leadership at Zayna'],['2014','Silver, Responsive Design category','London Web Craft Awards · retail client site'],['2013','Rising Star in UX','UK Interaction Design Guild · public-sector client site'],['2010','Best Graduation Project','Najd Valley University · Arabic speech-to-text notes app']];
-const PATENTS=[['Granted Jun 2024','Method for adaptive Arabic text rendering based on reading context','Patent No. SA 11223'],['Filed Mar 2025, pending','System for bilingual component theming in design systems','Application No. SA 2025-0417']];
-const MEDIA=[['Mar 2023','Cover story: “The engineer who designs in two directions”','Riyadh Tech Review'],['Nov 2023','Article: “Accessibility debt in fintech”','Medium · read 120,000 times'],['Jun 2024','Podcast: “From startup failure to Principal Engineer”','Build in Arabic, Episode 42'],['2020 to present','YouTube: Yara Builds','86 tutorials · 48,000 subscribers']];
-const PUBS=[['2022','Adaptive typography for Arabic interfaces: A study with 312 readers','Al-Mansouri & Marsh · Journal of Human-Centred Computing, 14(3), 211–238'],['2021','Trust signals in Arabic health apps','Al-Mansouri · Proceedings of ICAI 2021, 45–56'],['2020','Right-to-left design systems at scale','Al-Mansouri, Rahman & Okafor · DesignOps Summit Asia 2020, 12–19'],['2020','Measuring reading comfort on small screens','Al-Mansouri & Marsh · ICAI 2020 Workshop on Arabic Typography, 8–13'],['2019','Teaching front-end development in Arabic: Lessons from 50,000 learners','Al-Mansouri · Gulf Journal of Computing Education, 7(1), 33–49'],['2012','Bilingual navigation menus on small screens','Hart & Al-Mansouri · Northbridge Interaction Lab, NIL-TR-2012-07']];
-const TALKS=[['2025','Keynote: Design systems that speak two languages','Najd Developer Days · Riyadh'],['2025','Accessibility is a product decision','Gulf Design Week · Dubai'],['2024','Panel: Building trust in fintech UX','Gulf Fintech Builders Forum · Riyadh'],['2023','Scaling a team from 6 to 64','Engineering Leadership Week · Cairo'],['2022','What my PhD taught me about Arabic type','Typography Majlis · Jeddah'],['2021','Keynote: Telemedicine at national scale','Digital Health Middle East Summit · online'],['2016','Why our startup failed','Founders Night Riyadh'],['2014','Responsive design for right-to-left','Frontend Horizons · London']];
-const CERTS=[['Certified Security Architecture Professional (CSAP)','Global Cyber Assurance Council','2026','progress','Exam booked for Dec 2026'],['Certified Cloud Solutions Architect – Professional','Cloud Architecture Guild','2025','active','CAG-CSA-25-0912'],['Certified Design Leader','Arabian Design Council','2025','active','ADC-CDL-25-0044'],['Multi-Cloud Platform Architect','Halcyon Cloud Institute','2024','active','HLC-MPA-24-3307'],['Certified Container Application Developer','Open Container Academy','2024','active','OCA-CAD-24-1185'],['Open Banking Product Specialist','Gulf FinTech Academy','2024','active','GFA-OBP-24-0219'],['Certified Project Leadership Professional','International Project Leadership Society','2023','active','IPLS-CPL-23-5560'],['Certified Accessibility Specialist','Inclusive Interfaces Council','2023','active','IIC-CAS-23-0471'],['Applied Data Visualization Certificate','Riyadh Data Institute','2023','lifetime','RDI-ADV-23-0118'],['UX Research and Interaction Design Certificate','Meridian UX Institute','2022','lifetime','MUI-UXR-22-8842'],['Enterprise Architecture Practitioner','Global Enterprise Architecture Forum','2022','active','GEAF-EAP-22-0193'],['Certified Agile Product Owner','Agile Practice Council','2022','expired','APC-APO-22-6620','Expired 2024'],['Professional Scrum Facilitator, Level 1','Agile Delivery Institute','2021','lifetime','ADI-PSF-21-4410'],['Cloud Application Developer – Associate','Skyline Developer Program','2021','expired','SDP-CAD-21-2075','Expired 2023'],['IT Service Management Foundation','Service Excellence Board','2020','lifetime','SEB-ITSM-20-9931'],['Health Data Privacy Practitioner','Middle East Health Informatics Board','2020','active','MEHIB-HDP-20-0306'],['Lean Six Sigma Green Belt','Institute for Process Excellence','2019','lifetime','IPE-LSS-19-1402'],['Security Fundamentals Professional','Cyber Readiness Academy','2019','expired','CRA-SFP-19-7718','Expired 2022'],['Usability Analysis Professional','Usability Practice Institute','2016','lifetime','UPI-UAP-16-0268'],['Advanced Motion Design for Interfaces','London School of Interface Craft','2014','lifetime','LSIC-MD-14-0052']];
-
-/* ---------- render: front page ---------- */
-$('#numbers').innerHTML=NUMBERS.map(([n,l])=>`<dt>${n}</dt><dd>${l}</dd>`).join('');
-const tick=(copy)=>TICKER.map(([h,pg,t])=>`<a href="${h}"${copy?' tabindex="-1" aria-hidden="true"':''}><b>${pg}</b> ${t}</a>`).join('');
-$('#run').innerHTML=tick(false)+tick(true);
-const tp=$('#tick-pause');
-if(reduce){ $('#run').style.animationPlayState='paused'; tp.textContent='Play'; tp.setAttribute('aria-pressed','true'); }
-tp.addEventListener('click',()=>{ const paused=tp.getAttribute('aria-pressed')==='true'; tp.setAttribute('aria-pressed',!paused); tp.textContent=paused?'Pause':'Play'; $('#run').style.animationPlayState=paused?'running':'paused'; });
-
-/* ---------- render: business ---------- */
-$('#biz').innerHTML=ROLES.map((r,i)=>{
-  if(r.rule) return '<hr class="row-rule">';
-  const shown=r.pts.slice(0,r.shown), more=r.pts.slice(r.shown);
-  const list=a=>`<ul${r.cols?' class="cols-2"':''}>${a.map(p=>`<li>${p}</li>`).join('')}</ul>`;
-  return `<article class="story span-${r.span}${r.small?' small':''}">
-    <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><span class="dl">${r.when}</span>${r.stamp?`<span class="stamp">${r.stamp}</span>`:''}</div>
-    <h3>${r.title}</h3><div class="role">${r.org}</div>
-    ${list(shown)}
-    ${more.length?`<div class="more" id="more-${i}"><div>${list(more)}${r.tech?`<p style="font-family:var(--type);font-size:12.5px;margin-top:6px;text-align:left">Set in type: ${r.tech}</p>`:''}</div></div><button class="contd" type="button" aria-expanded="false" aria-controls="more-${i}">Continued: ${more.length} more ${more.length>1?'items':'item'}</button>`:''}
-  </article>`;
-}).join('');
-$$('.contd').forEach(b=>b.addEventListener('click',()=>{ const s=b.closest('.story'), o=!s.classList.contains('open'); s.classList.toggle('open',o); b.setAttribute('aria-expanded',o); const n=b.textContent.match(/\d+/)[0]; b.textContent=o?'Fold the story':`Continued: ${n} more ${n>1?'items':'item'}`; if(!o) b.textContent=`Continued: ${s.querySelectorAll('.more li').length} more ${s.querySelectorAll('.more li').length>1?'items':'item'}`; }));
-$('#ventures').innerHTML=VENTURES.map(v=>`<article><div style="display:flex;justify-content:space-between;gap:8px"><span class="dl kicker">${v.when}</span><span class="stamp${v.stamp==='Closed'?' blue':''}">${v.stamp}</span></div><h3>${v.title}</h3><div class="role" style="font-family:var(--display);font-style:italic;margin-bottom:6px">${v.role}</div><p>${v.body}</p></article>`).join('');
-
-/* ---------- render: features ---------- */
-const techCount={}; P.forEach(p=>p.tech.forEach(t=>techCount[t]=(techCount[t]||0)+1));
-const SUBJ=Object.keys(techCount).filter(t=>techCount[t]>1).sort((a,b)=>techCount[b]-techCount[a]||a.localeCompare(b));
-$('#subjects').innerHTML='<span>Index of subjects:</span>'+['All',...SUBJ].map((t,i)=>`<button type="button" aria-pressed="${i===0}" data-s="${t}">${t}${t==='All'?'':' ('+techCount[t]+')'}</button>`).join('');
-$('#feat-grid').innerHTML=P.map((p,i)=>`<article class="feat${p.big?' big':''}" data-i="${i}">
-  <div class="exhibit"><span class="kicker">Feature ${p.ex} · ${p.when.split(' to ')[0].split(' ').pop()}</span><span class="stamp">${p.stamp}</span></div>
-  <h3>${p.name}</h3>
-  <div class="meta">${p.role} · ${p.org}</div>
-  <p>${p.deck}</p>
-  <div class="figs">${p.figs.map(([v,l])=>`<div><b>${v}</b><small>${l}</small></div>`).join('')}</div>
-  <button class="btn open" type="button" data-open="${i}">Read the full story</button>
-</article>`).join('');
-$$('#subjects button').forEach(b=>b.addEventListener('click',()=>{ $$('#subjects button').forEach(x=>x.setAttribute('aria-pressed',x===b)); const s=b.dataset.s; $$('.feat').forEach(f=>f.classList.toggle('dim',s!=='All'&&!P[+f.dataset.i].tech.includes(s))); if(s!=='All') toast(`${s}: ${techCount[s]} features highlighted`); }));
-
-/* ---------- reader dialog ---------- */
-const reader=$('#reader'), page=$('#r-page'); let rIdx=0, rReturn=null;
-const DEMOS={
- mizan(el){ const g=['#2E8B57','#3CB371','#1F6F4A','#5FD38D','#228B22','#4CAF50','#2F9E6E','#66BB6A','#1B5E20','#43A047','#00A86B'];
-  el.innerHTML=`<div class="cap"><span>Demonstration · illustration of the audit finding</span><div class="toggle" role="group" aria-label="Compare"><button type="button" aria-pressed="true" data-v="0">Before</button><button type="button" aria-pressed="false" data-v="1">With Mizan</button></div></div><div class="sw" style="display:flex;gap:5px;flex-wrap:wrap">${g.map(c=>`<i style="display:block;width:28px;height:28px;background:${c};transition:all .5s"></i>`).join('')}</div><p class="st" style="margin:10px 0 0;font-family:var(--type);font-size:13px;text-align:left">11 shades of green across 9 teams.</p>`;
-  $$('button',el).forEach(b=>b.addEventListener('click',()=>{ $$('button',el).forEach(x=>x.setAttribute('aria-pressed',x===b)); const a=b.dataset.v==='1'; $$('.sw i',el).forEach((i,k)=>{ i.style.background=a?'#24405E':g[k]; i.style.borderRadius=a?'50%':'0'; }); $('.st',el).textContent=a?'One shared colour token, used by all 9 teams.':'11 shades of green across 9 teams.'; })); },
- tele(el){ el.innerHTML=`<div class="cap"><span>Demonstration · before and after the redesign</span><div class="toggle" role="group" aria-label="Compare"><button type="button" aria-pressed="false" data-v="b">Before</button><button type="button" aria-pressed="true" data-v="a">After</button></div></div><div style="font-size:14px">Average wait: <b class="w"></b></div><div class="bar" data-k="w"><i></i></div><div style="font-size:14px">Dropped calls: <b class="d"></b></div><div class="bar" data-k="d"><i></i></div>`;
-  const D={b:{w:22,d:20},a:{w:6,d:3}}; const set=v=>{ $('.w',el).textContent=D[v].w+' minutes'; $('.d',el).textContent=D[v].d+'%'; $$('.bar',el).forEach(b=>{ b.classList.toggle('bad',v==='b'); const k=b.dataset.k; $('i',b).style.width=(D[v][k]/(k==='w'?22:20)*100)+'%'; }); };
-  $$('button',el).forEach(b=>b.addEventListener('click',()=>{ $$('button',el).forEach(x=>x.setAttribute('aria-pressed',x===b)); set(b.dataset.v); })); set('a'); },
- hirfa(el){ const T={ltr:['Home › Accounts › Savings','Step 3 of 5','Continue →'],rtl:['الرئيسية ‹ الحسابات ‹ الادخار','الخطوة ٣ من ٥','متابعة ←']};
-  el.innerHTML=`<div class="cap"><span>Demonstration · one component, two directions</span><div class="toggle" role="group" aria-label="Direction"><button type="button" aria-pressed="true" data-d="ltr">English, LTR</button><button type="button" aria-pressed="false" data-d="rtl">Arabic, RTL</button></div></div><div class="hd" dir="ltr" style="border:1px solid var(--ink);padding:12px;background:var(--paper)"><div class="c" style="font-size:14px;color:var(--ink-2)"></div><div class="s" style="margin-top:6px"></div><div style="height:8px;border:1px solid var(--ink);margin:6px 0;position:relative"><i style="position:absolute;inset-block:0;inset-inline-start:0;width:62%;background:var(--ink)"></i></div><div style="display:flex;justify-content:flex-end"><span class="b" style="background:var(--ink);color:var(--paper);padding:6px 12px;font-size:14px"></span></div></div>`;
-  const hd=$('.hd',el), set=d=>{ hd.dir=d; hd.lang=d==='rtl'?'ar':'en'; [$('.c',hd).textContent,$('.s',hd).textContent,$('.b',hd).textContent]=T[d]; };
-  $$('button',el).forEach(b=>b.addEventListener('click',()=>{ $$('button',el).forEach(x=>x.setAttribute('aria-pressed',x===b)); set(b.dataset.d); })); set('ltr'); },
- khatt(el){ el.innerHTML=`<div class="cap"><span>Demonstration · simplified idea, not the patented model</span></div><label style="display:block;font-family:var(--type);font-size:12px">Screen width <input type="range" min="260" max="640" value="360" data-k="w" style="width:100%;accent-color:#8E2A1E"></label><label style="display:block;font-family:var(--type);font-size:12px;margin-top:6px">Reader needs more room <input type="range" min="0" max="10" value="3" data-k="r" style="width:100%;accent-color:#8E2A1E"></label><div class="scr" style="margin:10px auto 0;border:1px solid var(--ink);background:var(--paper);padding:12px;max-width:100%"><p lang="ar" dir="rtl" style="margin:0;font-family:'Libre Caslon Text',serif;text-align:right">النص العربي على الشاشة يحتاج إلى مساحة كي يُقرأ بسهولة.</p></div><p class="ro" style="font-family:var(--type);font-size:12px;margin:8px 0 0;text-align:left"></p>`;
-  const scr=$('.scr',el), p=$('p',scr), ro=$('.ro',el); const upd=()=>{ const w=Math.min(+$('[data-k=w]',el).value,el.clientWidth-30), r=+$('[data-k=r]',el).value; const fs=Math.round((15+(w-260)/380*4+r*.7)*10)/10, lh=(1.7+r*.05).toFixed(2), ws=(r*.6).toFixed(1); scr.style.width=w+'px'; Object.assign(p.style,{fontSize:fs+'px',lineHeight:lh,wordSpacing:ws+'px'}); ro.textContent=`Font size ${fs}px · line height ${lh} · word spacing ${ws}px`; };
-  $$('input',el).forEach(i=>i.addEventListener('input',upd)); upd(); },
- savings(el){ el.innerHTML=`<div class="cap"><span>Demonstration · how the flow was found</span></div><div style="display:grid;grid-template-columns:repeat(3,1fr);text-align:center">${[['Listen','48','interviews, 5 cities'],['Test','3','prototypes'],['Ship','610k','goals in 6 months']].map(([a,b,c],i)=>`<div style="${i?'border-inline-start:1px solid var(--hair);':''}padding:4px"><small style="font-family:var(--type);font-size:11px;color:var(--red)">${a}</small><b style="display:block;font-family:var(--display);font-size:30px;font-weight:900">${b}</b><span style="font-size:13px">${c}</span></div>`).join('')}</div>`; },
- qalam(el){ el.innerHTML=`<div class="cap"><span>Demonstration · illustrative Arabic explanation</span><div class="toggle" role="group" aria-label="Error language"><button type="button" aria-pressed="true" data-l="en">Standard error</button><button type="button" aria-pressed="false" data-l="ar">Qalam’s explanation</button></div></div><pre style="margin:0;font-family:var(--type);font-size:13.5px;background:var(--paper);border:1px solid var(--ink);padding:10px;direction:ltr">let name = "Yara";\nconsole.log(<u style="text-decoration:wavy underline #8E2A1E">nmae</u>);</pre><div class="e" style="margin-top:8px;border-inline-start:3px solid var(--red);padding:8px 10px;font-size:14px"></div>`;
-  const e=$('.e',el), set=l=>{ const ar=l==='ar'; e.dir=ar?'rtl':'ltr'; e.lang=ar?'ar':'en'; e.style.textAlign=ar?'right':'left'; e.style.fontSize=ar?'17px':'14px'; e.textContent=ar?'لم يتم تعريف المتغير nmae. هل تقصد name؟':'ReferenceError: nmae is not defined'; };
-  $$('button',el).forEach(b=>b.addEventListener('click',()=>{ $$('button',el).forEach(x=>x.setAttribute('aria-pressed',x===b)); set(b.dataset.l); })); set('en'); },
- dalil(el){ el.innerHTML=`<div class="cap"><span>Demonstration · each square is one Arabic-specific check</span><button type="button" class="btn" style="padding:3px 8px;font-size:11px" data-run>Run again</button></div><div class="g" style="display:grid;grid-template-columns:repeat(14,1fr);gap:4px">${'<i style="display:block;aspect-ratio:1;border:1px solid var(--ink);transition:background .2s"></i>'.repeat(42)}</div><p style="margin:8px 0 0;font-family:var(--type);font-size:13px;text-align:left"><b class="n">0</b> of 42 checks run</p>`;
-  let t; const run=()=>{ clearInterval(t); const c=$$('.g i',el); c.forEach(x=>x.style.background=''); let k=0; if(reduce){ c.forEach(x=>x.style.background='var(--ink)'); $('.n',el).textContent=42; return; } t=setInterval(()=>{ if(k>=42) return clearInterval(t); c[k].style.background='var(--ink)'; k++; $('.n',el).textContent=k; },40); };
-  $('[data-run]',el).addEventListener('click',run); run(); }
-};
-function openReader(i){
-  rIdx=(i+P.length)%P.length; const p=P[rIdx]; if(!reader.classList.contains('open')) rReturn=document.activeElement;
-  page.innerHTML=`<button class="btn close" type="button" data-rclose>Close</button>
-   <div class="top"><span>The Mansouri Gazette · Feature ${p.ex}</span><span>${p.when}</span></div>
-   <span class="kicker" style="display:block;margin-top:14px">${p.org}</span>
-   <h2 id="r-title">${p.name}</h2>
-   <p class="deck">${p.deck}</p>
-   <div class="byline"><span>Role: <b>${p.role}</b></span><span>${p.team}</span></div>
-   <div class="stats">${p.figs.concat(p.figs.length<3?[[p.tech.length,'technologies in the stack']]:[]).slice(0,3).map(([v,l])=>`<div><b>${v}</b><small>${l}</small></div>`).join('')}</div>
-   <div class="body cols-2">
-     <h4>The problem</h4><p class="dropcap">${p.problem}</p>
-     <h4>The work</h4><p>${p.action}</p>
-     <div class="pull">“${p.quote}”</div>
-     ${p.result?`<h4>The outcome</h4><p>${p.result}</p>`:''}
-     ${p.demo?'<div class="demo" id="r-demo"></div>':''}
-     <h4>Set in type</h4><div class="types">${p.tech.map(t=>`<span>${t}</span>`).join('')}</div>
-     ${p.link?`<p style="margin-top:12px;text-align:left"><a href="${p.link[1]}" target="_blank" rel="noopener" style="color:var(--red)">${p.link[0]} ☞</a></p>`:''}
-   </div>
-   <div class="foot"><button class="btn" type="button" data-rstep="-1">← ${P[(rIdx-1+P.length)%P.length].name}</button><button class="btn" type="button" data-rstep="1">${P[(rIdx+1)%P.length].name} →</button></div>`;
-  if(p.demo) DEMOS[p.demo]($('#r-demo',page));
-  reader.classList.add('open'); reader.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
-  reader.scrollTop=0;
-  // Move focus in once the reader is actually visible; retry briefly while its fade-in starts.
-  const close=$('[data-rclose]',page); let tries=0;
-  (function focusClose(){ close.focus({preventScroll:true}); if(document.activeElement!==close && ++tries<20) setTimeout(focusClose,25); })();
-  $('[data-rclose]',page).addEventListener('click',closeReader);
-  $$('[data-rstep]',page).forEach(b=>b.addEventListener('click',()=>openReader(rIdx+ +b.dataset.rstep)));
-}
-function closeReader(){ reader.classList.remove('open'); reader.setAttribute('aria-hidden','true'); document.body.style.overflow=''; if(rReturn) rReturn.focus({preventScroll:true}); }
-$$('[data-open]').forEach(b=>b.addEventListener('click',()=>openReader(+b.dataset.open)));
-reader.addEventListener('click',e=>{ if(e.target===reader) closeReader(); });
-reader.addEventListener('keydown',e=>{
-  if(e.key==='Escape') closeReader();
-  if(e.key==='Tab'){ const f=$$('button,a[href],input',page).filter(x=>x.offsetParent!==null); const a=f[0], z=f[f.length-1]; if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();} }
-});
-
-/* ---------- render: classifieds ---------- */
-const LV=['All','Expert','Advanced','Intermediate'];
-$('#class-tools').innerHTML=LV.map((l,i)=>`<button type="button" aria-pressed="${i===0}" data-l="${l}">${l}${l==='All'?'':' ('+SKILLS.filter(s=>s[1]===l).length+')'}</button>`).join('');
-$('#ads').innerHTML=`<div class="ad feature"><span class="lvl">Situation wanted</span><h3>Principal Engineer</h3><p style="text-align:center;margin:6px 0">Designs, codes and researches. 16 yrs. Arabic &amp; English. Riyadh-based.</p><span class="inq">Apply at the Letters desk, page H1</span></div>`+
- SKILLS.map(([n,l,y,tools,pitch])=>`<div class="ad" data-l="${l}"><span class="lvl">${l} · ${y} yrs</span><h3>${n}</h3><div class="yrs" role="img" aria-label="${y} years of 18"><i style="--w:0"></i><span>${y}</span></div><div class="tools">${tools}.</div><span class="inq">${pitch}</span></div>`).join('');
-$$('#class-tools button').forEach(b=>b.addEventListener('click',()=>{ $$('#class-tools button').forEach(x=>x.setAttribute('aria-pressed',x===b)); const l=b.dataset.l; $$('.ad[data-l]').forEach(a=>a.classList.toggle('hide',l!=='All'&&a.dataset.l!==l)); }));
-const adObs=new IntersectionObserver(([e])=>{ if(!e.isIntersecting) return; $$('.ad[data-l]').forEach((a,i)=>{ const y=SKILLS[i][2]; setTimeout(()=>$('.yrs i',a).style.setProperty('--w',(y/18*100)+'%'),reduce?0:i*80); }); adObs.disconnect(); },{threshold:.15});
-adObs.observe($('#ads'));
-
-/* ---------- render: research, honours ---------- */
-const li=([a,b,c])=>`<li><small>${a}</small><b>${b}</b><em>${c}</em></li>`;
-$('#patents').innerHTML=PATENTS.map(li).join(''); $('#media').innerHTML=MEDIA.map(li).join(''); $('#pubs').innerHTML=PUBS.map(li).join(''); $('#talks').innerHTML=TALKS.map(li).join('');
-$('#roll').innerHTML=AWARDS.map(([y,t,o])=>`<li><b>${y}</b><span>${t}</span><em>${o}</em></li>`).join('');
-
-/* ---------- render: certifications ---------- */
-const SL={active:'Active',lifetime:'Lifetime',expired:'Expired',progress:'In progress'};
-$('#notices').innerHTML=CERTS.map(([n,iss,y,st,id,lab])=>`<div class="notice" data-st="${st}" data-q="${(n+' '+iss).toLowerCase()}"><b>${n}</b><em>${iss}</em><div class="meta"><span>${st==='progress'?id:'No. '+id}</span><span class="st ${st}">${lab||SL[st]} · ${y}</span></div></div>`).join('');
-$('#cert-filters').innerHTML=['all','active','lifetime','progress','expired'].map((k,i)=>`<button type="button" aria-pressed="${i===0}" data-f="${k}">${k==='all'?'All':SL[k]} (${k==='all'?CERTS.length:CERTS.filter(c=>c[3]===k).length})</button>`).join('');
-let cf='all'; const fc=()=>{ const q=$('#cert-q').value.trim().toLowerCase(); let n=0; $$('.notice').forEach(x=>{ const ok=(cf==='all'||x.dataset.st===cf)&&(!q||x.dataset.q.includes(q)); x.classList.toggle('hide',!ok); if(ok)n++; }); $('#notices-empty').hidden=n>0; };
-$$('#cert-filters button').forEach(b=>b.addEventListener('click',()=>{ $$('#cert-filters button').forEach(x=>x.setAttribute('aria-pressed',x===b)); cf=b.dataset.f; fc(); }));
-$('#cert-q').addEventListener('input',fc);
-
-/* ---------- printing-press canvas ---------- */
-(function press(){
-  const c=$('#press'), ctx=c.getContext('2d'); let w,h,lines=[],mx=-999,my=-999,raf,vis=true;
-  function setup(){ const d=Math.min(devicePixelRatio||1,2); w=c.clientWidth; h=c.clientHeight; c.width=w*d; c.height=h*d; ctx.setTransform(d,0,0,d,0,0); lines=[]; const gap=Math.max(16,h/15);
-    for(let y=gap,i=0;y<h-gap/2;y+=gap,i++){ const rtl=i%2===1; const words=[]; let x=-20; while(x<w*2){ const len=rtl?10+Math.random()*46:6+Math.random()*30; words.push({x,len,h:rtl?2.4:5+Math.random()*3}); x+=len+(rtl?9:7); } lines.push({y,rtl,words,off:Math.random()*w,sp:.12+Math.random()*.18}); } }
-  function draw(){ ctx.clearRect(0,0,w,h);
-    // halftone dots
-    for(let y=6;y<h;y+=8) for(let x=6;x<w;x+=8){ const d=Math.hypot(x-w*.62,y-h*.4)/(w*.8); const r=Math.max(0,1.6-d*1.9); if(r>.1){ ctx.fillStyle='rgba(31,26,20,.12)'; ctx.beginPath(); ctx.arc(x,y,r,0,7); ctx.fill(); } }
-    for(const L of lines){ if(!reduce) L.off=(L.off+(L.rtl?-L.sp:L.sp)+w)%w;
-      ctx.fillStyle=L.rtl?'rgba(142,42,30,.78)':'rgba(31,26,20,.82)';
-      for(const W of L.words){ let x=W.x+L.off; x=((x+40)%(w+80)+(w+80))%(w+80)-40; const near=Math.max(0,1-Math.hypot(x-mx,L.y-my)/90); const dy=near*10, sm=near*3;
-        if(L.rtl){ ctx.fillRect(x,L.y+dy,W.len,W.h+sm*.3); if(W.len>30){ ctx.beginPath(); ctx.arc(x+W.len*.5,L.y-5+dy,1.5,0,7); ctx.fill(); } }
-        else { for(let k=0;k<W.len;k+=4.5) ctx.fillRect(x+k,L.y-W.h+dy+((k*7)%3),2.2+sm*.2,W.h); } } }
-  }
-  function loop(){ if(vis) draw(); raf=requestAnimationFrame(loop); }
-  setup(); addEventListener('resize',()=>{ setup(); draw(); });
-  c.parentElement.addEventListener('pointermove',e=>{ const r=c.getBoundingClientRect(); mx=e.clientX-r.left; my=e.clientY-r.top; if(reduce) draw(); });
-  c.parentElement.addEventListener('pointerleave',()=>{ mx=my=-999; if(reduce) draw(); });
-  new IntersectionObserver(([e])=>vis=e.isIntersecting).observe(c);
-  if(reduce) draw(); else loop();
-})();
-
-/* ---------- strip: active section, ink bar, mini masthead ---------- */
-const strip=$('#strip'), secLinks=$$('.strip a.sec'), bar=$('#ink-bar'), toFront=$('.to-front');
-const onScroll=()=>{ const H=document.documentElement.scrollHeight-innerHeight; bar.style.width=(H>0?scrollY/H*100:0)+'%'; strip.classList.toggle('past',strip.getBoundingClientRect().top<=0&&scrollY>200); toFront.classList.toggle('show',scrollY>innerHeight); };
-addEventListener('scroll',onScroll,{passive:true}); onScroll();
-const spy=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) secLinks.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id)); }),{rootMargin:'-40% 0px -55% 0px'});
-['front','business','features','classifieds','research','honours','academy','letters'].forEach(id=>spy.observe(document.getElementById(id)));
-$$('[data-front]').forEach(b=>b.addEventListener('click',()=>{ scrollTo({top:0,behavior:reduce?'auto':'smooth'}); }));
-const rv=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('inview'); rv.unobserve(e.target);} }),{threshold:.04});
-$$('.reveal').forEach(el=>rv.observe(el));
-
-/* ---------- mobile drawer ---------- */
-const drawer=$('#drawer'), menu=$('.strip .menu');
-const setD=o=>{ drawer.classList.toggle('open',o); menu.setAttribute('aria-expanded',o); document.body.style.overflow=o?'hidden':''; if(o) setTimeout(()=>$('nav a',drawer).focus(),50); else menu.focus(); };
-menu.addEventListener('click',()=>setD(true)); $('[data-close]',drawer).addEventListener('click',()=>setD(false));
-$$('nav a',drawer).forEach(a=>a.addEventListener('click',()=>{ drawer.classList.remove('open'); menu.setAttribute('aria-expanded',false); document.body.style.overflow=''; }));
-drawer.addEventListener('keydown',e=>{ if(e.key==='Escape') setD(false); if(e.key==='Tab'){ const f=$$('a,button',drawer); if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus();} else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus();} } });
-
-/* ---------- print edition (CV download) ---------- */
-$$('[data-cv]').forEach(a=>a.addEventListener('click',async e=>{
-  if(!window.claude||!window.claude.use) return;
-  e.preventDefault();
-  try{ const dl=await window.claude.use('downloads'); const r=await fetch(a.getAttribute('href')); if(!r.ok) throw 0; const blob=await r.blob(); if(dl){ await dl.save({filename:'Yara_Al-Mansouri_CV.pdf',data:blob}); toast('Print edition on its way'); } else location.href=a.href; }
-  catch(err){ if(err&&/declin|cancel|abort/i.test(err.message||err.name||'')) toast('Download cancelled'); else location.href=a.href; }
-}));
-
-/* ---------- letters to the editor ---------- */
-const form=$('#letter'), TO='yara.almansouri@mail.example';
-const rules={name:v=>v.trim().length>=2||'Please sign with your name.',email:v=>v.trim()?(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())||'That reply address looks incomplete, for example name@company.com.'):'We need a reply address to answer your letter.',topic:v=>!!v||'Choose what your letter is regarding.',message:v=>v.trim().length>=20||`A letter needs at least 20 characters (${v.trim().length} so far).`};
-const errFor={name:'l-name-err',email:'l-email-err',topic:'l-topic-err',message:'l-msg-err'};
-function check(i){ const r=rules[i.name]; if(!r) return true; const res=r(i.value), ok=res===true; i.setAttribute('aria-invalid',!ok); if(!ok) i.setAttribute('aria-describedby',errFor[i.name]); else i.removeAttribute('aria-describedby'); $('#'+errFor[i.name]).textContent=ok?'':res; return ok; }
-$$('[name]',form).forEach(i=>{ i.addEventListener('blur',()=>{ if(i.value) check(i); }); i.addEventListener('input',()=>{ if(i.getAttribute('aria-invalid')==='true') check(i); }); });
-$('#l-msg').addEventListener('input',e=>$('#l-count').textContent=`${e.target.value.length} / 2000`);
-form.addEventListener('submit',e=>{ e.preventDefault(); const bad=$$('[name]',form).filter(i=>!check(i)); if(bad.length){ bad[0].focus(); return; }
-  const d=Object.fromEntries(new FormData(form)), org=d.org.trim();
-  const subject=`Letter to the Editor: ${d.topic}, from ${d.name.trim()}${org?' ('+org+')':''}`;
-  const body=`Dear Yara,\n\n${d.message.trim()}\n\nYours sincerely,\n${d.name.trim()}\n${d.email.trim()}${org?'\n'+org:''}`;
-  $('#sealed-text').textContent=`To: ${TO}\nSubject: ${subject}\n\n${body}`;
-  $('#sealed-mail').href=`mailto:${TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  const s=$('#sealed'); s.classList.add('show'); s.focus({preventScroll:true}); s.scrollIntoView({block:'nearest',behavior:reduce?'auto':'smooth'}); });
-$('#sealed-copy').addEventListener('click',()=>copy($('#sealed-text').textContent,'Letter copied'));
-})();
-</script>
+<script src="data-en.js"></script>
+<script src="gazette.js"></script>
 </body>
 </html>
